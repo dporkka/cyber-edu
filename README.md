@@ -1,6 +1,15 @@
 # CyberEdu - Cybersecurity Learning Platform
 
+![Screenshot 2024-12-10 202329](https://github.com/user-attachments/assets/348abca4-ed65-4e8c-bfef-7e4922d6d802)
+
 A modern e-learning platform focused on cybersecurity education, built with React, TypeScript, and Strapi CMS.
+
+
+![Screenshot 2024-12-10 202345](https://github.com/user-attachments/assets/c033e50a-2c8e-46c9-a726-801e32041ff9)
+
+![Screenshot 2024-12-10 202411](https://github.com/user-attachments/assets/95eecd7b-d808-42a5-842e-4620827e1e7a)
+
+![Screenshot 2024-12-10 202430](https://github.com/user-attachments/assets/4c551144-c2d8-4577-9a5e-bf366ac94318)
 
 ## Features
 
@@ -8,8 +17,8 @@ A modern e-learning platform focused on cybersecurity education, built with Reac
 - 🎓 Expert-led curriculum
 - 💻 Interactive learning experience
 - 📱 Responsive design
-- 🔒 Secure authentication
-- 💳 Stripe payment integration
+- 🔒 Secure authentication (coming soon)
+- 💳 Stripe payment integration(coming soon)
 
 ## Getting Started
 
