@@ -1,28 +1,23 @@
 import { Button } from '@/components/ui/button';
-import { Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function Hero() {
   return (
-    <div className="bg-gradient-to-b from-background to-muted py-20">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center text-center space-y-8">
-          <Shield className="h-16 w-16 text-primary" />
-          <h1 className="text-4xl md:text-6xl font-bold">
-            Master Cybersecurity
-            <br />
-            <span className="text-primary">Protect the Digital World</span>
+    <div className="relative py-16 md:py-24 bg-muted">
+      <div className="container px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+            Master Cybersecurity Skills
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
-            Learn from industry experts and gain practical skills in cybersecurity.
-            Start your journey to becoming a cybersecurity professional today.
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            Learn from industry experts and advance your career in cybersecurity
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">
               <Link to="/courses">Browse Courses</Link>
             </Button>
-            <Button variant="outline" size="lg">
-              Learn More
+            <Button asChild size="lg" variant="outline">
+              <Link to="/about">Learn More</Link>
             </Button>
           </div>
         </div>

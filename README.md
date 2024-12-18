@@ -1,24 +1,35 @@
-# CyberEdu - Cybersecurity Learning Platform
+# CyberEdu Platform
 
-![Screenshot 2024-12-10 202329](https://github.com/user-attachments/assets/348abca4-ed65-4e8c-bfef-7e4922d6d802)
+A modern cybersecurity education platform template built with:
 
-A modern e-learning platform focused on cybersecurity education, built with React, TypeScript, and Strapi CMS.
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn/ui](https://ui.shadcn.com/)
+- [React Router](https://reactrouter.com/)
+- [Vite](https://vitejs.dev/)
 
+## License
 
-![Screenshot 2024-12-10 202345](https://github.com/user-attachments/assets/c033e50a-2c8e-46c9-a726-801e32041ff9)
+This template is available under a modified MIT license:
 
-![Screenshot 2024-12-10 202411](https://github.com/user-attachments/assets/95eecd7b-d808-42a5-842e-4620827e1e7a)
+- Free for personal use
+- Commercial use allowed for teams of 2 or fewer
+- Teams larger than 2 require a lifetime license ($90)
 
-![Screenshot 2024-12-10 202430](https://github.com/user-attachments/assets/4c551144-c2d8-4577-9a5e-bf366ac94318)
+Purchase options:
+- [Purchase via Stripe](https://buy.stripe.com/28o7sQesAe7BbnicMN)
+- [Purchase via PayPal](https://www.paypal.com/donate/?hosted_button_id=KMK2EUCL379LC)
 
 ## Features
 
-- 🛡️ Comprehensive cybersecurity courses
-- 🎓 Expert-led curriculum
-- 💻 Interactive learning experience
-- 📱 Responsive design
-- 🔒 Secure authentication (coming soon)
-- 💳 Stripe payment integration(coming soon)
+- 🔒 Authentication system
+- 🎨 Modern UI with Shadcn components
+- 📱 Fully responsive design
+- 🚀 Built with performance in mind
+- 🌙 Dark mode support
+- 🔍 SEO optimized
+- 📝 TypeScript for better development experience
 
 ## Getting Started
 
