@@ -13,11 +13,11 @@ export function Contact() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-8 md:py-16">
       <div className="max-w-2xl mx-auto">
-        <Card>
+        <Card className="mx-4 md:mx-0">
           <CardHeader>
-            <CardTitle className="text-2xl">Contact Us</CardTitle>
+            <CardTitle className="text-xl md:text-2xl">Contact Us</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">

@@ -1,38 +1,50 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from '@/components/layout/Layout';
-import { Home } from '@/pages/Home';
-import { About } from '@/pages/About';
-import { Contact } from '@/pages/Contact';
-import { Careers } from '@/pages/Careers';
-import { Privacy } from '@/pages/Privacy';
-import { Terms } from '@/pages/Terms';
-import { CookiePolicy } from '@/pages/CookiePolicy';
-import { Courses } from '@/pages/Courses';
-import { CourseDetail } from '@/pages/CourseDetail';
-import { NotFound } from '@/components/shared/NotFound';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { ProtectedRoute } from '@/components/shared/ProtectedRoute';
+import { 
+  Home,
+  About,
+  Contact,
+  Courses,
+  Login,
+  SignUp,
+  CookiePolicy 
+} from '@/pages';
 import { ErrorBoundary } from '@/components/shared/ErrorBoundary';
+import { Blog } from '@/pages/Blog';
+import { BlogPost } from '@/pages/BlogPost';
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <ErrorBoundary>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/courses/:courseId" element={<CourseDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </ErrorBoundary>
-    </Router>
+    <HelmetProvider>
+      <AuthProvider>
+        <Router>
+          <Layout>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route 
+                  path="/courses" 
+                  element={
+                    <ProtectedRoute>
+                      <Courses />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/cookie-policy" element={<CookiePolicy />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+              </Routes>
+            </ErrorBoundary>
+          </Layout>
+        </Router>
+      </AuthProvider>
+    </HelmetProvider>
   );
 }
-
-export default App;
