@@ -1,51 +1,54 @@
 import { Course } from '@/types/course';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Clock, Users, BookOpen } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface CourseHeaderProps {
   course: Course;
   onEnroll: () => void;
 }
 
-export function CourseHeader({ course, onEnroll }: CourseHeaderProps) {
+export function CourseHeader({ course }: CourseHeaderProps) {
   return (
-    <div className="bg-muted py-8">
+    <div className="bg-muted/50 py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-4">
-            <Badge>{course.level}</Badge>
-            <h1 className="text-4xl font-bold">{course.title}</h1>
-            <p className="text-lg text-muted-foreground">{course.description}</p>
-            
-            <div className="flex space-x-4 text-sm text-muted-foreground">
-              <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1" />
-                {course.duration}
+          <div>
+            <div className="space-y-4">
+              <div className="flex gap-2">
+                <Badge>{course.category}</Badge>
+                <Badge variant="outline">{course.level}</Badge>
               </div>
-              <div className="flex items-center">
-                <Users className="h-4 w-4 mr-1" />
-                {course.category}
-              </div>
-              <div className="flex items-center">
-                <BookOpen className="h-4 w-4 mr-1" />
-                {course.curriculum.reduce((acc, module) => acc + module.lessons.length, 0)} Lessons
+              <h1 className="text-4xl font-bold tracking-tight">
+                {course.title}
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                {course.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Icons.clock className="h-4 w-4" />
+                  <span>{course.duration}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icons.graduationCap className="h-4 w-4" />
+                  <span>{course.curriculum.reduce((acc, module) => acc + module.lessons.length, 0)} lessons</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Icons.users className="h-4 w-4" />
+                  <span>Created by {course.instructor.name}</span>
+                </div>
               </div>
             </div>
           </div>
-          
-          <div className="bg-card p-6 rounded-lg shadow-lg">
-            <div className="space-y-4">
-              <div className="text-center">
-                <span className="text-3xl font-bold">${course.price}</span>
-              </div>
-              <Button className="w-full" size="lg" onClick={onEnroll}>
-                Enroll Now
-              </Button>
-              <p className="text-sm text-center text-muted-foreground">
-                30-day money-back guarantee
-              </p>
-            </div>
+
+          <div className="relative aspect-video rounded-lg overflow-hidden">
+            <img
+              src={course.thumbnail}
+              alt={course.title}
+              className="object-cover w-full h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         </div>
       </div>

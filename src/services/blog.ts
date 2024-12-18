@@ -92,3 +92,44 @@ export async function getBlogPost(slug: string): Promise<BlogPost> {
     },
   };
 } 
+
+export async function createBlogPost(data: CreateBlogPostData) {
+  const response = await fetch(`${API_URL}/api/blog-posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify({
+      data: {
+        title: data.title,
+        slug: data.slug,
+        content: data.content,
+        excerpt: data.excerpt,
+        seo: {
+          metaTitle: data.seo.metaTitle,
+          metaDescription: data.seo.metaDescription,
+          keywords: JSON.stringify(data.seo.keywords),
+          metaRobots: 'index, follow',
+          structuredData: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": data.title,
+            "description": data.excerpt,
+            "author": {
+              "@type": "Person",
+              "name": data.author.name
+            },
+            "datePublished": new Date().toISOString()
+          })
+        }
+      }
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to create blog post');
+  }
+
+  return response.json();
+} 

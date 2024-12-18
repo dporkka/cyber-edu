@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_posts",
+  "info": {
+    "singularName": "blog-post",
+    "pluralName": "blog-posts",
+    "displayName": "Blog Post",
+    "description": "Create and manage blog posts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "excerpt": {
+      "type": "text",
+      "required": true,
+      "maxLength": 160
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "readingTime": {
+      "type": "string"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "posts"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "posts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    },
+    "seo": {
+      "type": "json",
+      "required": true,
+      "default": {
+        "metaTitle": "",
+        "metaDescription": "",
+        "keywords": [],
+        "metaRobots": "index, follow",
+        "structuredData": null,
+        "metaViewport": "width=device-width, initial-scale=1",
+        "canonicalURL": ""
+      }
+    }
+  }
+} 

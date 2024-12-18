@@ -1,6 +1,5 @@
-import { Navbar } from './Navbar';
+import { Navigation } from './Navigation';
 import { Footer } from './Footer';
-import { Toaster } from 'sonner';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,11 +7,14 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <main className="flex-1">{children}</main>
+    <div className="min-h-screen flex flex-col">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <Navigation />
+      </header>
+      <main className="flex-1">
+        {children}
+      </main>
       <Footer />
-      <Toaster />
     </div>
   );
 }

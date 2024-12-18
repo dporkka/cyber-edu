@@ -9,7 +9,7 @@ interface BlogPaginationProps {
 
 export function BlogPagination({ currentPage, totalPages, onPageChange }: BlogPaginationProps) {
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex items-center justify-center gap-2">
       <Button
         variant="outline"
         size="icon"

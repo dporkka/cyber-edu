@@ -1,108 +1,78 @@
 import { Link } from 'react-router-dom';
+import { Icons } from '@/lib/icons';
 
 export function Footer() {
   return (
-    <footer className="border-t">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="border-t py-8 bg-background">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-semibold mb-3">About</h3>
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <Icons.logo className="h-6 w-6" />
+              <span className="font-semibold">CyberEdu</span>
+            </Link>
+            <p className="text-sm text-muted-foreground">
+              Empowering the next generation of cybersecurity professionals.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-foreground">
-                  About Us
+                <Link to="/courses" className="text-sm text-muted-foreground hover:text-primary">
+                  Courses
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-foreground">
+                <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/documentation" className="text-sm text-muted-foreground hover:text-primary">
+                  Documentation
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="text-sm text-muted-foreground hover:text-primary">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-muted-foreground hover:text-foreground">
+                <Link to="/careers" className="text-sm text-muted-foreground hover:text-primary">
                   Careers
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-3">Courses</h3>
+            <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/courses" className="text-muted-foreground hover:text-foreground">
-                  All Courses
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses?category=beginner" className="text-muted-foreground hover:text-foreground">
-                  Beginner
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses?category=advanced" className="text-muted-foreground hover:text-foreground">
-                  Advanced
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-3">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/privacy" className="text-muted-foreground hover:text-foreground">
+                <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-muted-foreground hover:text-foreground">
+                <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary">
                   Terms of Service
                 </Link>
-              </li>
-              <li>
-                <Link to="/cookie-policy" className="text-muted-foreground hover:text-foreground">
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-3">Connect</h3>
-            <ul className="space-y-2">
-              <li>
-                <a 
-                  href="https://twitter.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://github.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  GitHub
-                </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} CyberEdu. All rights reserved.</p>
+          © {new Date().getFullYear()} CyberEdu. All rights reserved.
         </div>
       </div>
     </footer>

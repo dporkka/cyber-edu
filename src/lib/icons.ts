@@ -4,7 +4,6 @@ import {
   Award,
   Menu,
   LogOut,
-  Shield,
   Lock,
   BookOpen,
   GraduationCap,
@@ -12,11 +11,22 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
-  // Add other icons you need
+  Twitter,
+  Linkedin,
+  Share,
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle,
+  Key,
+  ShieldCheck,
+  BarChart,
+  Infinity,
+  Check,
+  Play,
 } from 'lucide-react';
 
 export const Icons = {
-  logo: Shield,
+  logo: ShieldCheck,
   users: Users,
   laptop: Laptop,
   certificate: Award,
@@ -29,7 +39,19 @@ export const Icons = {
   search: Search,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
-  // Add other icons
+  twitter: Twitter,
+  linkedin: Linkedin,
+  share: Share,
+  alertCircle: AlertCircle,
+  alertTriangle: AlertTriangle,
+  checkCircle: CheckCircle,
+  key: Key,
+  shieldCheck: ShieldCheck,
+  barChart: BarChart,
+  graduationCap: GraduationCap,
+  infinity: Infinity,
+  check: Check,
+  play: Play,
 } as const;
 
 export type IconKeys = keyof typeof Icons; 

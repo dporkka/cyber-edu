@@ -1,36 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { BlogPost as BlogPostType } from '@/types/blog';
-import { getBlogPost } from '@/services/blog';
-import { LoadingSpinner } from '@/components/shared/LoadingSpinner';
-import { Badge } from '@/components/ui/badge';
-import { formatDate } from '@/lib/utils';
-import { Helmet } from 'react-helmet-async';
+import { getBlogPost, type Post } from '@/lib/api';
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPostType | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [post, setPost] = useState<Post | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchPost() {
+    async function loadPost() {
       if (!slug) return;
-      
       try {
         const data = await getBlogPost(slug);
         setPost(data);
       } catch (error) {
-        console.error('Failed to fetch blog post:', error);
+        console.error('Error loading post:', error);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     }
 
-    fetchPost();
+    loadPost();
   }, [slug]);
 
-  if (isLoading) {
-    return <LoadingSpinner />;
+  if (loading) {
+    return <div>Loading post...</div>;
   }
 
   if (!post) {
@@ -38,49 +32,30 @@ export function BlogPost() {
   }
 
   return (
-    <>
-      <Helmet>
-        <title>{post.seo.title}</title>
-        <meta name="description" content={post.seo.description} />
-        <meta name="keywords" content={post.seo.keywords.join(', ')} />
-      </Helmet>
-      
-      <article className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <div className="flex items-center justify-between text-muted-foreground mb-8">
-            <div className="flex items-center space-x-4">
-              <img
-                src={post.author.avatar}
-                alt={post.author.name}
-                className="h-10 w-10 rounded-full"
-              />
-              <div>
-                <div className="font-medium">{post.author.name}</div>
-                <div className="text-sm">{formatDate(post.publishedAt)} · {post.readingTime}</div>
-              </div>
-            </div>
-          </div>
-          <div className="aspect-video relative rounded-lg overflow-hidden mb-8">
-            <img 
-              src={post.coverImage} 
-              alt={post.title}
-              className="object-cover w-full h-full"
-            />
-          </div>
+    <article className="container mx-auto px-4 py-8 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-4">
+        {post.attributes.title}
+      </h1>
+      <div className="flex items-center gap-4 mb-8 text-muted-foreground">
+        <span>{post.attributes.readingTime}</span>
+        <span>By {post.attributes.author.data.attributes.name}</span>
+      </div>
+      <div 
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: post.attributes.content }}
+      />
+      <div className="mt-8 pt-8 border-t">
+        <div className="flex gap-2">
+          {post.attributes.tags.data.map((tag) => (
+            <span 
+              key={tag.attributes.name}
+              className="bg-secondary px-3 py-1 rounded-full text-sm"
+            >
+              {tag.attributes.name}
+            </span>
+          ))}
         </div>
-        <div 
-          className="prose prose-slate dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </article>
-    </>
+      </div>
+    </article>
   );
 } 

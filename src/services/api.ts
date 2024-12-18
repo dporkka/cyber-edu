@@ -45,3 +45,28 @@ function transformStrapiCourse(strapiCourse: any): Course {
     curriculum: strapiCourse.attributes.curriculum,
   };
 }
+
+// Add blog-related API functions
+export async function getBlogPosts() {
+  try {
+    const response = await fetch(`${API_URL}/api/blog-posts?populate=*`);
+    if (!response.ok) throw new Error('Failed to fetch blog posts');
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Error fetching blog posts:', error);
+    throw error;
+  }
+}
+
+export async function getBlogPost(slug: string) {
+  try {
+    const response = await fetch(`${API_URL}/api/blog-posts?filters[slug]=${slug}&populate=*`);
+    if (!response.ok) throw new Error('Failed to fetch blog post');
+    const data = await response.json();
+    return data.data[0];
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    throw error;
+  }
+}
